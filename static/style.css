@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&display=swap");
 
 html {
+    height: 100%;
     min-height: 100%;
     margin: 0;
 
@@ -21,6 +22,9 @@ html {
             #060816 20%,
             #090d18 100%
         );
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 body {
@@ -39,15 +43,12 @@ body {
     min-height: 100vh;
     min-height: 100dvh;
 
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+    display: flex;
+    flex-direction: column;
 
     box-sizing: border-box;
 
-    background: rgba(10, 14, 28, 0.35);
-
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    background: transparent;
 }
 
 body::before {
@@ -69,7 +70,7 @@ body::before {
     background-position: center;
     background-repeat: no-repeat;
 
-    opacity: 0.15;
+    opacity: 0.1;
 
     filter: blur(20px);
 
@@ -142,9 +143,13 @@ main {
     text-align: center;
 }
 
-main a {
-    display: block;
-    text-align: center;
+body > main {
+    flex: 1 0 auto;
+}
+
+h3 {
+    border-bottom: 2px solid #6f7cff;
+    padding-bottom: 8px;
 }
 
 p,
@@ -155,6 +160,12 @@ b {
     font-size: 20px;
 
     color: #edf3ff;
+}
+
+audio {
+  width: 100%;
+  max-width: 500px;
+  min-width: 250px;
 }
 
 .pfp-container {
@@ -264,13 +275,15 @@ footer {
     color: white;
 
     padding: 2rem 1.5rem;
+    margin: auto 0 0;
 
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-    margin-bottom: 0;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 
-    padding-left: calc(50vw - 50%);
-    padding-right: calc(50vw - 50%);
+    box-sizing: border-box;
+    flex-shrink: 0;
 
     border-top: 1px solid rgba(255, 255, 255, 0.08);
 
@@ -279,6 +292,8 @@ footer {
 
     box-shadow:
         0 -10px 40px rgba(0, 0, 0, 0.2);
+
+    text-align: center;
 }
 
 footer a {
@@ -314,4 +329,45 @@ footer a {
 .biography {
     width: 100%;
     text-align: left;
+}
+
+.gamejam-container {
+    display: flex;
+    align-items: flex-start; /* was center */
+    justify-content: space-between;
+    min-height: 10vh;
+    gap: 30px;
+}
+
+.ongoing-container {
+    display: flex;
+    align-items: flex-start; /* was center */
+    justify-content: space-between;
+    min-height: 10vh;
+    gap: 30px;
+
+}
+
+.description {
+    text-align: left;
+}
+
+.originals-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+    width: 100%;
+}
+
+.originals-container iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border: 0;
+}
+
+@media (max-width: 768px) {
+    .originals-container {
+        grid-template-columns: 1fr;
+    }
 }

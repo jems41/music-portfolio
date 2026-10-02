@@ -9,23 +9,25 @@
       href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1/new.min.css"
     />
     <link rel="stylesheet" href="https://newcss.net/theme/night.css" />
-    <link href="../static/style.css" rel="stylesheet" type="text/css" />
+    <link
+      href="{{ url_for('static', filename='style.css', v='8') }}"
+      rel="stylesheet"
+      type="text/css"
+    />
     <script defer src="../static/script.js"></script>
     {% block scripts %}{% endblock %}
   </head>
-  <header>
-    <main>
-    </main>
-    <nav>
-      <ul>
-        <li><a href="{{ url_for('index') }}">Homepage</a>
-        <li><a href="{{ url_for('portfolio') }}">Portfolio</a></li>
-        <li><a href="{{ url_for('contact') }}">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
   <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('index') }}">Homepage</a></li>
+          <li><a href="{{ url_for('portfolio') }}">Portfolio</a></li>
+          <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
     {% block body %}{% endblock %}
+    {% block footer %}{% endblock %}
   </body>
-  {% block footer %}{% endblock %}
 </html>
